@@ -4,7 +4,6 @@
 var proxy = "__PROXY__";
 
 var rules = [
-  "mapi.szanba.cn",
   "mzstatic.com",
   "apple.com",
   "95516.com",
@@ -16,13 +15,27 @@ var rules = [
   "yingzt.com",
   "growingio.com",
   "bestpay.com.cn",
-  "api.ffan.com",
+  "ffan.com",
   "lianlianpay.com",
   "tongbanjie.com",
   "cmpassport.com",
   "freeyun.net",
   "d.cn",
-  "360kan.com"
+  "360kan.com",
+  "myapp.com",
+  ".myapp.com",
+  "myapp",
+  "play-apps-download",
+  "phicomm.com",
+  "wx_emoji",
+  "apk",
+  ".apk",
+  "*apk",
+  "video.xiaomi.com"
+];
+
+var myRules = [
+  "myapp"
 ];
 
 /*
@@ -784,15 +797,38 @@ CombinedMatcher.prototype = {
 var defaultMatcher = new CombinedMatcher();
 
 var direct = 'DIRECT;';
+var pro = "PROXY 172.16.3.60:8888";
+if (isInNet(myIpAddress(), "172.16.3.0", "255.255.255.0"))
+	pro = "PROXY 172.16.3.60:8888";
+if (myIpAddress() == "127.0.0.1") {
+    pro = "PROXY 172.16.3.60:8888";
+}
+pro = "PROXY 172.16.3.60:8888";
 
 for (var i = 0; i < rules.length; i++) {
     defaultMatcher.add(Filter.fromText(rules[i]));
 }
 
 function FindProxyForURL(url, host) {
-    if (defaultMatcher.matchesAny(url, host) instanceof BlockingFilter) {
+	if (isPlainHostName(host)  )
+        return direct;
+    //if (url.indexOf('myapp') !== -1 || shExpMatch(url, "http://*/*myapp*") ||  shExpMatch(host, "*myapp*") || shExpMatch(url, "*apk") || defaultMatcher.matchesAny(url, host) instanceof BlockingFilter ) {
+    //    return pro;
+    if (defaultMatcher.matchesAny(url, host) instanceof BlockingFilter ) {
         return direct;
     }
-    return "PROXY 172.16.3.60:8888";
+    return pro;
+}
+
+function Test(url, host) {
+	if (isInNet(myIpAddress(), "172.16.3.0", "255.255.255.0")) {
+		alert("12");
+	}
+    alert(proxy);
+    if (defaultMatcher.matchesAny(url, host) instanceof BlockingFilter  ) {
+        alert("direct");
+        return;
+    }
+    alert(proxy);
 }
 
