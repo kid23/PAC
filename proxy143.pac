@@ -4,7 +4,6 @@
 var proxy = "__PROXY__";
 
 var rules = [
-  "mapi.szanba.cn",
   "mzstatic.com",
   "apple.com",
   "95516.com",
