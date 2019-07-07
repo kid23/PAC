@@ -27,7 +27,8 @@ var rules = [
   "wx_emoji",
   "phicomm.com",
   "ixigua.com",
-  "video.xiaomi.com"
+  "video.xiaomi.com",
+  "bytecdn.cn",
 ];
 
 /*
