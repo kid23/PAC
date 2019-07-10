@@ -6,5 +6,13 @@
 var proxy = "PROXY 192.168.1.36:8888";
 
 function FindProxyForURL(url, host) {
-    return proxy;
+
+for (var i = 0; i < rules.length; i++) {
+	var s = "*"+rules[i]+"*";
+	if(shExpMatch(url,s)){  
+		return proxy;
+	}
+}
+
+    return "DIRECT";
 }
