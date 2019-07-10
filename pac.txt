@@ -31,17 +31,21 @@ var rules = [
   "bytecdn.cn",
 ];
 
-var proxy = "PROXY 172.16.3.60:8888";
+var proxy = "PROXY 192.168.1.36:8888";
+
+if (isInNet(myIpAddress(),"172.16.0.0", "255.255.0.0"))
+{
+	proxy = "PROXY 172.16.3.60:8888";
+}
 
 function FindProxyForURL(url, host) {
 
 for (var i = 0; i < rules.length; i++) {
 	var s = "*"+rules[i]+"*";
 	if(shExpMatch(url,s)){  
-		alert(s);
 		return "DIRECT";
 	}
 }
-alert("2"+url);
-    return proxy;
+
+return proxy;
 }
