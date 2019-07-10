@@ -31,7 +31,7 @@ var rules = [
   "bytecdn.cn",
 ];
 
-var proxy = "PROXY 192.168.1.36:8888";
+var proxy = "PROXY 172.16.3.60:8888";
 
 function FindProxyForURL(url, host) {
 
