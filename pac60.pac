@@ -1,5 +1,4 @@
 var rules = [
-  "mapi.szanba.cn",
   "mzstatic.com",
   "apple.com",
   "95516.com",
