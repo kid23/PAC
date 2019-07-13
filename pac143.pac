@@ -1,8 +1,8 @@
 var rules = [
+  "apk",
   "mzstatic.com",
   "apple.com",
   "95516.com",
-  "apk",
   "m.wangyin.com",
   "ele.me",
   "msjdpay.jd.com",
