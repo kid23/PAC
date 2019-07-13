@@ -31,7 +31,7 @@ var proxy = "PROXY 192.168.2.143:8888; PROXY 192.168.2.110:8888; DIRECT";
 
 function FindProxyForURL(url, host) {
 
-if(shExpMatch(url,"*apk")){  
+if(url.indexof("apk")>0){  
 	return "DIRECT";
 }
 	
