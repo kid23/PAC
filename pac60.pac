@@ -27,7 +27,7 @@ var rules = [
   "bsgslb.cn",
 ];
 
-var proxy = "PROXY 172.16.3.60:8888; PROXY 192.168.2.110:8888; DIRECT";
+var proxy = "PROXY 172.16.3.60:8888";
 
 function FindProxyForURL(url, host) {
 
