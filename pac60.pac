@@ -2,6 +2,7 @@ var rules = [
   "mzstatic.com",
   "apple.com",
   "95516.com",
+  "95559.com",
   "apk",
   "m.wangyin.com",
   "ele.me",
