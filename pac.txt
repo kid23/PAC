@@ -3,59 +3,29 @@
 
 // 2019-02-08: Updated to support shadowsocks-windows user rules.
 
-var rules = [
-  "apk",
-  //"mapi.szanba.cn",
-  "mzstatic.com",
-  "apple.com",
-  "95516.com",
-  "95559.com",
-  "m.wangyin.com",
-  "ele.me",
-  "msjdpay.jd.com",
-  "wandafilm.com",
-  "xiaoying.com",
-  "yingzt.com",
-  "growingio.com",
-  "bestpay.com.cn",
-  "api.ffan.com",
-  "lianlianpay.com",
-  "tongbanjie.com",
-  "cmpassport.com",
-  "freeyun.net",
-  "d.cn",
-  "360kan.com",
-  "myapp.com",
-  "wx_emoji",
-  "phicomm.com",
-  "ixigua.com",
-  "video.xiaomi.com",
-  "bytecdn.cn",
-  "bsgslb.cn",
-  "pstatp.com",
-];
+var rules = ["apk",
+//"mapi.szanba.cn",
+"mzstatic.com", "apple.com", "95516.com", "95559.com", "m.wangyin.com", "ele.me", "msjdpay.jd.com", "wandafilm.com", "xiaoying.com", "yingzt.com", "growingio.com", "bestpay.com.cn", "api.ffan.com", "lianlianpay.com", "tongbanjie.com", "cmpassport.com", "freeyun.net", "d.cn", "360kan.com", "myapp.com", "wx_emoji", "phicomm.com", "ixigua.com", "video.xiaomi.com", "bytecdn.cn", "bsgslb.cn", "pstatp.com", ];
 
 var proxy = "PROXY 192.168.1.36:8888";
 
-if (isInNet(myIpAddress(),"172.16.0.0", "255.255.0.0"))
-{
+if (isInNet(myIpAddress(), "172.16.0.0", "255.255.0.0")) {
 	proxy = "PROXY 172.16.3.60:8888";
 }
-if (isInNet(myIpAddress(),"192.168.2.0", "255.255.255.0"))
-{
+if (isInNet(myIpAddress(), "192.168.2.0", "255.255.255.0")) {
 	proxy = "PROXY 192.168.2.143:8888";
 }
 
 function FindProxyForURL(url, host) {
-if(url.indexOf("apk")>0){  
-	return "DIRECT";
-}
-for (var i = 0; i < rules.length; i++) {
-	var s = "*"+rules[i]+"*";
-	if(shExpMatch(url,s)){  
+	if (url.indexOf("apk") > 0) {
 		return "DIRECT";
 	}
-}
+	for (var i = 0; i < rules.length; i++) {
+		var s = "*" + rules[i] + "*";
+		if (shExpMatch(url, s)) {
+			return "DIRECT";
+		}
+	}
 
-return proxy;
+	return proxy;
 }
