@@ -26,7 +26,6 @@ var rules = [
   "video.xiaomi.com",
   "bytecdn.cn",
   "bsgslb.cn",
-  "pstatp.com",
 ];
 
 var proxy = "PROXY 172.16.3.60:8888";
